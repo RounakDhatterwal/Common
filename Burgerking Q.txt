@@ -1,0 +1,48 @@
+<?php
+// Your code here!
+/* 
+
+Burgerking sells three items: 
+VegBurger which needs 2 breads & 1 veg pattice
+NonVegBurger which needs 2 breads & 1 non-veg pattice
+TikkiBurger which needs 2 breads & 1 tikki pattice
+
+Given bread quantity, veg pattice quantity, non-veg pattice quantity, tikki pattice quantity & price of all 3 items
+
+Print the total maximum possible profit by making all possible items based on bread availability 
+
+Also, test for all inputs, we would change all the values while testing, the quantity values as well as price
+
+And program has to be optimal with respect to time & space complexity
+
+*/
+
+$breads = 15;
+$vegPattice = 3;
+$nonVegPattice = 2;
+$TikkiPattice = 1;
+$priceVegBurger = 100;
+$priceNonVegBurger = 125;
+$priceTikkiBurger = 112;
+
+$maxProfit = 0;
+
+// Calculate the maximum number of VegBurgers that can be made based on available bread and veg pattice
+$maxVegBurgers = min($breads / 2, $vegPattice);
+
+// Calculate the maximum number of NonVegBurgers that can be made based on available bread and non-veg pattice
+$maxNonVegBurgers = min($breads / 2, $nonVegPattice);
+
+// Calculate the maximum number of TikkiBurgers that can be made based on available bread and tikki pattice
+$maxTikkiBurgers = min($breads / 2, $TikkiPattice);
+
+// Calculate the total profit for each type of burger
+$totalProfitVegBurger = $maxVegBurgers * $priceVegBurger;
+$totalProfitNonVegBurger = $maxNonVegBurgers * $priceNonVegBurger;
+$totalProfitTikkiBurger = $maxTikkiBurgers * $priceTikkiBurger;
+
+// Calculate the maximum profit among all three types of burgers
+$maxProfit = max($totalProfitVegBurger, $totalProfitNonVegBurger, $totalProfitTikkiBurger);
+
+print($maxProfit);
+?>

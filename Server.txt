@@ -1,0 +1,43 @@
+<?php
+
+// Given N servers, in 5 minutes interval, every minute, the load is checked and if load is
+// less than 50%, the servers are either reduced to N/2 else they are increased to
+// 2N + 1
+// Input : No. of servers (N), server load every minute
+// Output : The number of servers running at the end of 5 minutes
+// Example:
+
+// Input:
+// 2 (2 servers)
+// 10 60 50 15 20 (On 1st minute - 10% load, on 2nd minute - 60% load & so on)
+
+// Output:
+// 1 (After 5 minute, 1 server is running)
+
+$server = 2;
+$load = [10, 60, 50, 15, 20];
+
+for ($i = 0; $i < 5; $i++) {
+
+    // Calculate the load percentage for the current minute
+    $currentLoad = $load[$i];
+    $currentLoadPercentage = $currentLoad * 100 / $server;
+
+    // Check if the load is less than 50%
+    if ($currentLoadPercentage < 50) {
+
+        // Reducing the number of servers to N/2
+        $server = $server / 2;
+    } else {
+
+        // Increasing the number of servers to 2N + 1
+        $server = 2 * $server + 1;
+    }
+}
+
+// Print the number of servers running at the end of 5 minutes
+print($server);
+?>
+
+
+
